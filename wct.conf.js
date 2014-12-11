@@ -30,7 +30,8 @@
 
 // MODULES //
 
-var path = require( 'path' );
+var path = require( 'path' ),
+	browsers = require( './sauce-browsers.json' );
 
 
 // CONFIG //
@@ -58,10 +59,7 @@ config = {
 	],
 
 	// Browsers on which to test:
-	'browsers': [
-		'SL_Chrome',
-		'SL_Firefox'
-	],
+	'browsers': browsers,
 
 	// Whether the local or remote browsers should be targeted:
 	'remote': true,

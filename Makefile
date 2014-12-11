@@ -126,14 +126,17 @@ install-bower: node_modules
 # BUILD #
 
 .PHONY: build
-.PHONY: build-tmp
+.PHONY: build-tmp build-cleanup
 
-build: node_modules clean-build build-tmp browserify vulcanize
+build: node_modules clean-build build-tmp browserify vulcanize build-cleanup
 
 build-tmp:
 	mkdir build
 	cp -r ./src/ ./build
 	mv $(BROWSERIFY_OUT) $(BROWSERIFY_IN)
+
+build-cleanup:
+	rm -rf build
 
 
 # BROWSERIFY #

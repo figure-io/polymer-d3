@@ -1,0 +1,18 @@
+
+# Directories #
+###############
+build/
+reports/
+dist/
+
+# Node.js #
+###########
+/node_modules/
+
+# Bower #
+#########
+/bower/
+
+# Git #
+#######
+.git*

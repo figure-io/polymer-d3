@@ -1,0 +1,46 @@
+{
+  "name": "polymer-d3",
+  "version": "0.0.0",
+  "description": "Wraps D3 in a Polymer element.",
+  "authors": [
+  	{
+  		"name": "Athan Reines",
+  		"email": "kgryte@gmail.com"
+  	}
+  ],
+  "main": "./polymer-d3.html",
+  "repository": {
+  	"type": "git",
+  	"url": "git://github.com/figure-io/polymer-d3"
+  },
+  "keywords": [
+  	"figure-io",
+  	"figure",
+  	"polymer",
+  	"web component",
+  	"data",
+  	"visualization",
+  	"viz",
+  	"chart",
+  	"graph",
+  	"d3js",
+  	"d3"
+  ],
+  "dependencies": {
+  	"polymer": "Polymer/polymer#~0.5.1"
+  },
+  "devDependencies": {},
+  "ignore": [
+  	"TODO.md",
+  	".*",
+  	"test",
+  	"node_modules",
+  	"bower",
+  	"src",
+  	"Makefile",
+  	"karma.conf.js",
+  	"vulcanize.conf.js",
+  	"package.json"
+  ],
+  "license": "MIT"
+}

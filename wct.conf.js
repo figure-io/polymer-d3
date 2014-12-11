@@ -59,7 +59,9 @@ config = {
 	],
 
 	// Browsers on which to test:
-	'browsers': browsers,
+	'browsers': [
+		'chrome'
+	],
 
 	// Whether the local or remote browsers should be targeted:
 	'remote': true,

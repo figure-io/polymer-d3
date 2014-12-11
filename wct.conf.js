@@ -59,12 +59,12 @@ config = {
 
 	// Browsers on which to test:
 	'browsers': [
-		'chrome',
-		'firefox'
+		'SL_Chrome',
+		'SL_Firefox'
 	],
 
 	// Whether the local or remote browsers should be targeted:
-	'remote': false,
+	'remote': true,
 
 	// Whether the browser should remain open after running tests:
 	'persistent': false,

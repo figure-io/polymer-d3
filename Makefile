@@ -21,18 +21,28 @@ NOTES ?= 'TODO|FIXME|WARNING|HACK|NOTE'
 BOWER ?= ./node_modules/.bin/bower
 
 
-# KARMA #
+# BROWSERIFY #
 
-KARMA ?= ./node_modules/karma/bin/karma
-KARMA_PORT ?= 9876
-KARMA_REPORTERS ?= mocha
-KARMA_BROWSERS ?= Chrome
-KARMA_LOG_LEVEL ?= info
+BROWSERIFY ?= ./node_modules/.bin/browserify
+BROWSERIFY_IN ?= ./build/js/tmp.js
+BROWSERIFY_OUT ?= ./build/js/script.js
+
+
+# VULCANIZE #
+
+VULCANIZE ?= ./node_modules/.bin/vulcanize
+VULCANIZE_CONF ?= ./vulcanize.conf.json
+VULCANIZE_IN ?= ./build/polymer-d3.html
+VULCANIZE_OUT ?= ./polymer-d3.html
+
+
+# WEB COMPONENT TESTER #
+
+WCT ?= ./node_modules/.bin/wct
 
 
 # BUILD #
 
-BUILD ?= ./bin/build
 BUILD_OUT ?= polymer-d3.html
 
 
@@ -76,32 +86,13 @@ notes:
 
 # UNIT TESTS #
 
-.PHONY: test test-watch
-.PHONY: test-karma-mocha
-.PHONY: test-karma-mocha-watch
+.PHONY: test
+.PHONY: test-wct
 
-test: test-karma-mocha
+test: test-wct
 
-test-watch: test-karma-mocha-watch
-
-test-karma-mocha: node_modules
-	$(KARMA) start \
-		--single-run \
-		--colors \
-		--port $(KARMA_PORT) \
-		--browsers $(KARMA_BROWSERS) \
-		--reporters $(KARMA_REPORTERS) \
-		--log-level $(KARMA_LOG_LEVEL) \
-		--no-auto-watch
-
-test-karma-mocha-watch: node_modules
-	$(KARMA) start \
-		--colors \
-		--port $(KARMA_PORT) \
-		--browsers $(KARMA_BROWSERS) \
-		--reporters $(KARMA_REPORTERS) \
-		--log-level $(KARMA_LOG_LEVEL) \
-		--auto-watch
+test-wct: node_modules
+	$(WCT)
 
 
 # LINT #
@@ -127,7 +118,7 @@ install: install-node install-bower install-vulcanize
 install-node:
 	npm install
 
-install-bower:
+install-bower: node_modules
 	$(BOWER) install
 
 
@@ -135,9 +126,37 @@ install-bower:
 # BUILD #
 
 .PHONY: build
+.PHONY: build-tmp
 
-build: node_modules
-	$(BUILD)
+build: node_modules clean-build build-tmp browserify vulcanize
+
+build-tmp:
+	mkdir build
+	cp -r ./src/ ./build
+	mv $(BROWSERIFY_OUT) $(BROWSERIFY_IN)
+
+
+# BROWSERIFY #
+
+.PHONY: browserify
+
+browserify: node_modules
+	$(BROWSERIFY) \
+		$(BROWSERIFY_IN) \
+		-o $(BROWSERIFY_OUT)
+
+
+# VULCANIZE #
+
+.PHONY: vulcanize
+
+vulcanize: node_modules
+	$(VULCANIZE) \
+		$(VULCANIZE_IN) \
+		--config $(VULCANIZE_CONF) \
+		-o $(VULCANIZE_OUT) \
+		--inline \
+		--no-strip-excludes
 
 
 # CLEAN #
@@ -149,7 +168,7 @@ clean: clean-build clean-node clean-bower
 
 clean-build:
 	rm -rf build
-	rm $(BUILD_OUT)
+	rm -f $(BUILD_OUT)
 
 clean-node:
 	rm -rf node_modules

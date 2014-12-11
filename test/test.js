@@ -1,25 +1,18 @@
-/* global chai, describe, it, beforeEach */
+/* global suite, test, assert, expect */
 'use strict';
 
 // TESTS //
 
-describe( 'polymer-d3', function tests() {
-
-	var expect = chai.expect;
+suite( 'polymer-d3', function tests() {
 
 	// SETUP //
 
-	var el;
+	var el = document.querySelector( '#d3' );
 
-	beforeEach( function beforeEach() {
-		el = document.createElement( 'polymer-d3' );
-	});
-
-	// TESTS //
-
-	it( 'should expose D3', function test() {
+	test( 'should expose D3', function test() {
 		var d3 = el.d3;
-		expect( d3 ).to.be.a( 'function' );
+		assert.ok( el );
+		expect( d3 ).to.be.an( 'object' );
 		expect( d3.select ).to.be.a( 'function' );
 		expect( d3.svg.axis ).to.be.a( 'function' );
 		expect( d3.svg.line ).to.be.a( 'function' );

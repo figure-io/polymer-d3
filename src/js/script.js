@@ -28,6 +28,11 @@
 
 'use strict';
 
+// MODULES //
+
+var d3 = require( 'd3/d3.min.js' );
+
+
 // POLYMER //
 
 /* global Polymer */
@@ -36,5 +41,5 @@ Polymer( 'polymer-d3', {
 	* METHOD: d3
 	*	Binds the dependency to the element.
 	*/
-	d3: require( 'd3' )
+	'd3': d3
 });

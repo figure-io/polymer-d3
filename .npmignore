@@ -23,6 +23,7 @@ benchmark/
 # Bower #
 #########
 /bower/
+.bowerrc
 
 # Logs #
 ########
@@ -54,3 +55,5 @@ Desktop.ini
 .jshintignore
 .travis.yml
 .editorconfig
+vulcanize.conf.json
+wct.conf.js

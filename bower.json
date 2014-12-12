@@ -39,8 +39,10 @@
     "node_modules",
     "bower",
     "src",
+    "config",
     "Makefile",
     "wct.conf.js",
+    "sauce-browsers.json",
     "vulcanize.conf.js",
     "package.json"
   ],

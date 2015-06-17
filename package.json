@@ -44,13 +44,8 @@
     "browserify": "^7.0.0",
     "jshint": "2.x.x",
     "jshint-stylish": "^1.0.0",
-    "vulcanize": "^0.7.1",
-    "web-component-tester": "^2.0.1"
+    "vulcanize": "^1.9.3",
+    "web-component-tester": "^3.1.7"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ]
+  "license": "MIT"
 }

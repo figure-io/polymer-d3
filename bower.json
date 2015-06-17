@@ -27,10 +27,10 @@
     "d3"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.1"
+    "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
-    "web-component-tester": "~2.0.1"
+    "web-component-tester": "~3.1.7"
   },
   "ignore": [
     "TODO.md",
